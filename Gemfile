@@ -5,6 +5,12 @@ source 'https://rubygems.org'
 gem 'rails', '4.1.4'
 
 
+#jr: 19/9/14
+# Add Bootstrap 
+gem 'bootstrap-sass', '2.3.2.0'
+gem 'sprockets', '2.11.0'
+
+
 
 # Use sqlite3 as the database for Active Record
 #jr: 19 aug 2014 
