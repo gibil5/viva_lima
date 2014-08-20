@@ -5,11 +5,12 @@ source 'https://rubygems.org'
 gem 'rails', '4.1.4'
 
 
-#jr: 19/9/14
-# Add Bootstrap 
+#jr
+# Bootstrap 
 gem 'bootstrap-sass', '2.3.2.0'
 gem 'sprockets', '2.11.0'
-
+# Password encryption 
+gem 'bcrypt-ruby', '3.1.2'
 
 
 # Use sqlite3 as the database for Active Record
