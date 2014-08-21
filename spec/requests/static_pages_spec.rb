@@ -13,6 +13,7 @@ describe "Static pages" do
 subject { page }
 
 
+
 # Home page specifications  
   describe "Home page" do
 
@@ -23,8 +24,6 @@ subject { page }
     it { should_not have_title('| Home') }
 
   end
-
-
 
 
 # Help page specifications 
