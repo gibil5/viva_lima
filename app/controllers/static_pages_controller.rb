@@ -1,6 +1,6 @@
 
 
-#jr@oblique: 19/9/14
+#jr@oblique: 23/8/14
 
 
 class StaticPagesController < ApplicationController
@@ -8,8 +8,9 @@ class StaticPagesController < ApplicationController
 
 # Executes the code and then renders the view
 
-  def home
 
+#jx 
+  def home
   end
 
 
