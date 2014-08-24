@@ -1,6 +1,6 @@
 
 
-#jr@oblique: 20/8/14
+#jr@oblique: 22/8/14
 
 require 'spec_helper'
 
@@ -15,16 +15,17 @@ describe User do
                       password: "foobar", password_confirmation: "foobar")
   end
 
+
   subject { @user }
 
 
-  # test the existence of methods and attributes, using Rubys respond_to? method 
+  # test the existence of methods and attributes,     using Rubys respond_to? method 
   it { should respond_to(:name) }
   it { should respond_to(:email) }
+  
   it { should respond_to(:password_digest) }
   it { should respond_to(:password) }
   it { should respond_to(:password_confirmation) }
-
   it { should respond_to(:authenticate) }
 
 
@@ -90,7 +91,9 @@ describe User do
 
 
 
-# validate: password presence
+# Password 
+
+#jx validate: presence
   describe "when password is not present" do
     before do
       @user = User.new(name: "Example User", email: "user@example.com",
@@ -99,7 +102,7 @@ describe User do
     it { should_not be_valid }
   end
 
-# validate: password confirmation 
+# validate: confirmation 
   describe "when password doesn't match confirmation" do
     before { @user.password_confirmation = "mismatch" }
     it { should_not be_valid }
@@ -108,15 +111,24 @@ describe User do
 
 
 #jx
-# password authentication 
+
+
+  # Password too short 
   describe "with a password that's too short" do
     before { @user.password = @user.password_confirmation = "a" * 5 }
     #it { should be_invalid }
   end
 
+
+
+# User authentication 
   describe "return value of authenticate method" do
     before { @user.save }
-    let(:found_user) { User.find_by(email: @user.email) }
+
+    # let memoization 
+    let(:found_user) { 
+        User.find_by(email: @user.email) 
+      }
 
 
     describe "with valid password" do
