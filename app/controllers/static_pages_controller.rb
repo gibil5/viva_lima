@@ -1,7 +1,8 @@
 
 
-#jr@oblique: 23/8/14
-
+#jr@oblique: 26/08/14
+#
+# bundle exec rspec 
 
 class StaticPagesController < ApplicationController
 

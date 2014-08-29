@@ -1,4 +1,27 @@
 
 
-<%= @user.name %>, <%= @user.email %>
+<%# called by users_controller show action 
+	uses embedded Ruby to display the user's name and email 
+	user is provided by users_controller 
+%>
+
+
+<% provide(:title, @user.name) %>
+
+<div class="row">
+
+  <aside class="span4">
+
+    <section>
+
+      <h1>
+        <%= gravatar_for @user %>
+        <%= @user.name %>
+      </h1>
+
+    </section>
+
+  </aside>
+</div>
+
 

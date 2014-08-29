@@ -1,6 +1,6 @@
 
 
-#jr@oblique: 19/9/14
+#jr@oblique: 26/08/14
 
 Rails.application.routes.draw do
 
@@ -16,8 +16,12 @@ Rails.application.routes.draw do
 
   root  'static_pages#home'
 
-  match '/signup',  to: 'users#new',            via: 'get'
-  
+  # links get request with the users_controller 
+  #match '/jx_signup',  to: 'users#new',            via: 'get'
+  #match '/jx_signup',  to: 'users#jx_create',            via: 'get'
+  match '/signup',     to: 'users#new',                  via: 'get'
+
+
   match '/help',    to: 'static_pages#help',    via: 'get'
   match '/about',   to: 'static_pages#about',   via: 'get'
   match '/contact', to: 'static_pages#contact', via: 'get'
