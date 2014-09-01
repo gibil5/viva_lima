@@ -1,6 +1,6 @@
 
 
-#jr@oblique: 22/8/14
+#jr@oblique: 01/09/14
 
 require 'spec_helper'
 
@@ -22,10 +22,12 @@ describe User do
   # test the existence of methods and attributes,     using Rubys respond_to? method 
   it { should respond_to(:name) }
   it { should respond_to(:email) }
-  
   it { should respond_to(:password_digest) }
   it { should respond_to(:password) }
   it { should respond_to(:password_confirmation) }
+
+  it { should respond_to(:remember_token) }
+
   it { should respond_to(:authenticate) }
 
 
@@ -143,6 +145,17 @@ describe User do
       specify { expect(user_for_invalid_password).to be_false }
     end
   end
+
+
+
+# Test if the user save generates a remember token, through the callback 
+  describe "remember token" do
+    before { @user.save }
+    its(:remember_token) { should_not be_blank }
+  end
+
+
+
 
 
 end

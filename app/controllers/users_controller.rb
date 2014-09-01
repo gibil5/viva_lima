@@ -1,6 +1,6 @@
 
 
-# jr@oblique:  29/08/14
+# jr@oblique:  1/9/14
 
 
 class UsersController < ApplicationController
@@ -26,6 +26,7 @@ class UsersController < ApplicationController
 
 
     if @user.save
+      sign_in @user
     	#flash[:success] = "Welcome to the Sample App!"
       flash[:success] = "! Bienvenid@ a Viva Lima !"
     	redirect_to @user

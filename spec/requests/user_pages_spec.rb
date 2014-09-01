@@ -10,6 +10,7 @@ describe "User pages" do
   subject { page }
 
 
+
 # Signup page specification 
   describe "signup page" do
   	
@@ -22,12 +23,13 @@ describe "User pages" do
 
 
 
-  # Test signup process, with Capybara 
+# Test signup process, with Capybara 
   describe "signup" do
 
     before { visit signup_path }
 
     let(:submit) { "Crea mi cuenta" }
+
 
 
 # invalide info
@@ -37,9 +39,12 @@ describe "User pages" do
       end
     end
 
+
+
 # valid info
     # with capybara 
     describe "with valid information" do
+
       before do
         fill_in "Nombre",         with: "Example User"
         fill_in "Email",          with: "user@example.com"
@@ -52,6 +57,17 @@ describe "User pages" do
         expect { click_button submit }.to change(User, :count).by(1)
       end
 
+
+      # Sign in the user after sign up 
+      describe "after saving the user" do
+        before { click_button submit }
+        let(:user) { User.find_by(email: 'user@example.com') }
+
+        it { should have_link('Sign out') }
+        it { should have_title(user.name) }
+        #it { should have_selector('div.alert.alert-success', text: 'Welcome') }
+        it { should have_selector('div.alert.alert-success', text: 'Bienvenid@') }
+      end
 
     end
   end
