@@ -1,6 +1,6 @@
 
+#jr@oblique: 2/9/14
 
-#jr@oblique: 20/8/14
 
 require 'spec_helper'
 
@@ -32,10 +32,10 @@ subject { page }
 
     before { visit help_path }
 
-    #it { should have_content('Help') }
-    #it { should have_title(full_title('Help')) }
-    it { should have_content('Ayuda') }
-    it { should have_title(full_title('Ayuda')) }
+    it { should have_content('Help') }
+    it { should have_title(full_title('Help')) }
+    #it { should have_content('Ayuda') }
+    #it { should have_title(full_title('Ayuda')) }
   end
 
 
@@ -44,10 +44,10 @@ subject { page }
 
     before { visit about_path }
 
-    #it { should have_content('About') }
-    #it { should have_title(full_title('About Us'))}
-    it { should have_content('Quiénes somos') }
-    it { should have_title(full_title('Quiénes somos'))}
+    it { should have_content('About') }
+    it { should have_title(full_title('About Us'))}
+    #it { should have_content('Quiénes somos') }
+    #it { should have_title(full_title('Quiénes somos'))}
 
   end
 
@@ -58,10 +58,10 @@ subject { page }
 
     before { visit contact_path }
 
-    #it { should have_content('Contact') }
-    #it { should have_title(full_title('Contact')) }
-    it { should have_content('Contáctanos') }
-    it { should have_title(full_title('Contáctanos')) }
+    it { should have_content('Contact') }
+    it { should have_title(full_title('Contact')) }
+    #it { should have_content('Contáctanos') }
+    #it { should have_title(full_title('Contáctanos')) }
 
   end
 

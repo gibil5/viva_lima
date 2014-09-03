@@ -6,8 +6,10 @@
       <%= link_to "viva lima", '#', id: "logo" %>
       <nav>
         <ul class="nav pull-right">
-          <li><%= link_to "Inicio",    root_path %></li>
-          <li><%= link_to "Ayuda",    help_path %></li>
+
+          <li><%= link_to "Home",    root_path %></li>
+
+          <li><%= link_to "Help",    help_path %></li>
 
 
          <% if signed_in? %>
@@ -35,11 +37,12 @@
                 </li>
               </ul>
             </li>
-          <% else %>
 
-          <li><%= link_to "Regístrate", '#' %></li>
+        <% else %>
 
-           <% end %>
+            <li><%= link_to "Sign in", signin_path %></li>
+
+        <% end %>
            
 
         </ul>
