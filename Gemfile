@@ -1,5 +1,6 @@
 
-#jr: 23/8/14 
+#jr@oblique:  2/9/14 
+
 
 source 'https://rubygems.org'
 
@@ -15,6 +16,11 @@ gem 'bootstrap-sass', '2.3.2.0'
 gem 'sprockets', '2.11.0'
 # Password encryption 
 gem 'bcrypt-ruby', '3.1.2'
+# to make sample users 
+gem 'faker', '1.1.2'
+# to paginate 
+gem 'will_paginate', '3.0.4'
+gem 'bootstrap-will_paginate', '0.0.9'
 
 
 # Use sqlite3 as the database for Active Record
@@ -22,7 +28,9 @@ gem 'bcrypt-ruby', '3.1.2'
 #gem 'sqlite3'
 group :development, :test do
   gem 'sqlite3', '1.3.8'
-  gem 'rspec-rails', '2.13.1'
+
+  #gem 'rspec-rails', '2.13.1'
+  gem "rspec-rails", '~> 2.14.0.rc1'
 end
 
 gem 'capybara', '2.1.0'

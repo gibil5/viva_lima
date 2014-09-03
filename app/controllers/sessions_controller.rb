@@ -1,28 +1,31 @@
 
 
-# jr@oblique:  1/9/14
+# jr@oblique:  2/9/14
 
 
 class SessionsController < ApplicationController
 
 
   def new
-  	puts "jx: new"
+  	#puts "jx: new"
   end
 
 
 
+
   def create
- 	puts "jx: create"
+ 	  #puts "jx: create"
 
   	# uses: 	find_by, provided by ActiveRecord 
   	# 			autheticate, provided by has_secure_password
   	user = User.find_by(email: params[:session][:email].downcase)
+
   	if user && user.authenticate(params[:session][:password])
     	# Sign the user in and redirect to the user's show page.
       	
-        sign_in user       # Not yet written 
-      	redirect_to user
+        sign_in user
+      	#redirect_to user
+        redirect_back_or user
 
   	else
     	# Create an error message and re-render the signin form.
@@ -35,7 +38,7 @@ class SessionsController < ApplicationController
 
 
   def destroy
- 	  puts "jx: destroy"
+ 	  #puts "jx: destroy"
     sign_out
     redirect_to root_url
   end
