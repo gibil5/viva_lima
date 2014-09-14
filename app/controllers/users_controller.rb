@@ -1,14 +1,36 @@
 
-# jr@oblique:  2/9/14
+# jr@oblique:  4/9/14
 
 
 class UsersController < ApplicationController
-
 # filters 
-    #before_action :signed_in_user, only: [:index, :edit, :update]
     before_action :signed_in_user, only: [:index, :edit, :update, :destroy]  
     before_action :correct_user,   only: [:edit, :update]
     before_action :admin_user,     only: :destroy
+
+
+# New
+  def new
+    @user = User.new
+  end
+
+
+# Create 
+  def create
+    #@user = User.new(params[:user])    # Not the final implementation!
+    @user = User.new(user_params)
+
+    if @user.save
+      sign_in @user
+      #flash[:success] = "Welcome to the Sample App!"
+      flash[:success] = "! Bienvenid@ a Viva Lima !"
+      redirect_to @user
+    else
+      render 'new'
+    end
+  end 
+
+
 
 
   def destroy
@@ -32,9 +54,6 @@ class UsersController < ApplicationController
   end
 
 
-  def new
-    @user = User.new
-  end
 
 
    
@@ -58,21 +77,6 @@ class UsersController < ApplicationController
 
 
 
-  def create
-    #@user = User.new(params[:user])    # Not the final implementation!
-    @user = User.new(user_params)
-
-
-    if @user.save
-      sign_in @user
-    	#flash[:success] = "Welcome to the Sample App!"
-      flash[:success] = "! Bienvenid@ a Viva Lima !"
-    	redirect_to @user
-    else
-      render 'new'
-    end
-
-  end 
 
 
 

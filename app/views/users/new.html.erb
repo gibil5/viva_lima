@@ -1,9 +1,12 @@
 
+
+
 <% provide(:title, 'Inscríbete') %>
 <h1>Inscríbete</h1>
 
 <div class="row">
   <div class="span6 offset3">
+
     <%= form_for(@user) do |f| %>
 
       <%= render 'shared/error_messages' %>
@@ -21,6 +24,7 @@
       <%= f.password_field :password_confirmation %>
 
       <%= f.submit "Crea mi cuenta", class: "btn btn-large btn-primary" %>
+
     <% end %>
   </div>
 </div>

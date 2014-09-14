@@ -10,7 +10,6 @@ class User < ActiveRecord::Base
   before_create :create_remember_token
 
 
-
 # Validation block 
   validates :name,  presence: true, length: { maximum: 50 } 
   # email: using a regular expression to validate format 
@@ -21,6 +20,7 @@ class User < ActiveRecord::Base
            uniqueness: { case_sensitive: false }
   has_secure_password
   validates :password, length: { minimum: 6 } 
+
 
 
 

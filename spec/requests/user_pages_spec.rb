@@ -10,7 +10,7 @@ describe "User pages" do
   subject { page }
 
 
-# index 
+# INDEX 
   describe "index" do
     
     let(:user) { FactoryGirl.create(:user) }
@@ -25,6 +25,8 @@ describe "User pages" do
     it { should have_content('All users') }
 
 
+
+# pagination 
     describe "pagination" do
 
       before(:all) { 30.times { FactoryGirl.create(:user) } }
@@ -68,7 +70,7 @@ describe "User pages" do
 
 
 
-# Signup page specification 
+# CREATE - Signup page specification 
   describe "signup page" do
   	
     before { visit signup_path }
@@ -76,11 +78,10 @@ describe "User pages" do
       #it { should have_title(full_title('Sign up')) }
       it { should have_content('Inscríbete') }
       it { should have_title(full_title('Inscríbete')) }
-    end
+  end
 
 
-
-# Test signup process, with Capybara 
+# CREATE - Test signup process, with Capybara 
   describe "signup" do
 
     before { visit signup_path }
@@ -131,7 +132,7 @@ describe "User pages" do
 
 
 
-# Profile page 
+# SHOW - Profile page 
   describe "profile page" do
 
     let(:user) { 
@@ -149,11 +150,11 @@ describe "User pages" do
 
 
 
-# Edit user pages 
+# EDIT - User pages 
   describe "edit" do
 
     let(:user) { FactoryGirl.create(:user) }
-    #before { visit edit_user_path(user) }
+
     before do
       sign_in user
       visit edit_user_path(user)
@@ -165,6 +166,7 @@ describe "User pages" do
       it { should have_link('change', href: 'http://gravatar.com/emails') }
     end
 
+# with invalid information 
     describe "with invalid information" do
       before { click_button "Save changes" }
       it { should have_content('error') }

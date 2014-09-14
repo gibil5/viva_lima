@@ -52,7 +52,6 @@ subject { page }
   end
 
 
-
 # Contact page specification 
   describe "Contact page" do
 
