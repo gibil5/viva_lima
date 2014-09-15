@@ -1,5 +1,6 @@
 
-# jr@oblique:  2/09/14
+# jr@oblique:  15/9/14
+
 
 FactoryGirl.define do
   factory :user do
@@ -10,8 +11,13 @@ FactoryGirl.define do
 
     factory :admin do
       admin true
-    end
-    
+    end    
   end
+
+  factory :micropost do
+    content "Lorem ipsum"
+    user
+  end
+
 end
 

@@ -1,6 +1,10 @@
 
 
 class User < ActiveRecord::Base
+  #has_many :microposts
+  has_many :microposts, dependent: :destroy
+
+
 
 # Callbacks 
 # Before save callback, to enforce downcasing
