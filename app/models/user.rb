@@ -5,7 +5,6 @@ class User < ActiveRecord::Base
   has_many :microposts, dependent: :destroy
 
 
-
 # Callbacks 
 # Before save callback, to enforce downcasing
   before_save { self.email = email.downcase }
@@ -28,6 +27,14 @@ class User < ActiveRecord::Base
 
 
 
+# FEED 
+  def feed
+    # This is preliminary. See "Following users" for the full implementation.
+    Micropost.where("user_id = ?", id)
+  end
+
+
+
 # Create remember token 
   def User.new_remember_token
     SecureRandom.urlsafe_base64
@@ -36,7 +43,6 @@ class User < ActiveRecord::Base
   def User.digest(token)
     Digest::SHA1.hexdigest(token.to_s)
   end
-
 
   private
 

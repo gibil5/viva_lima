@@ -8,14 +8,12 @@ describe Micropost do
 
 
   let(:user) { FactoryGirl.create(:user) }
+
   before { @micropost = user.microposts.build(content: "Lorem ipsum") }
-
-
-    # This code is not idiomatically correct.
-    #before do 
-    #  @micropost = Micropost.new(content: "Lorem ipsum", user_id: user.id)
-    #end
-    before { @micropost = user.microposts.build(content: "Lorem ipsum") }
+  # This code is not idiomatically correct.
+  #before do 
+  #  @micropost = Micropost.new(content: "Lorem ipsum", user_id: user.id)
+  #end
 
   subject { @micropost }
 

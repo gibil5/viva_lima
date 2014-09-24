@@ -1,5 +1,5 @@
 
-# jr@oblique:  2/9/14
+# jr@oblique:  24/9/14
 
 
 require 'spec_helper'
@@ -112,22 +112,34 @@ describe "Authentication" do
         end
 
         describe "submitting to the update action" do
-
           # Issue http request directly
-          before { patch user_path(user) }
-          
+          before { patch user_path(user) }          
           # Test the response of the server directly 
           specify { expect(response).to redirect_to(signin_path) }
         end
-
 
         describe "visiting the user index" do
           before { visit users_path }
           it { should have_title('Sign in') }
         end
-
       end
 
+
+
+# Microposts
+# Create requests by non-signedin users should be redirected to the signin page. 
+      describe "in the Microposts controller" do
+
+        describe "submitting to the create action" do
+          before { post microposts_path }
+          specify { expect(response).to redirect_to(signin_path) }
+        end
+
+        describe "submitting to the destroy action" do
+          before { delete micropost_path(FactoryGirl.create(:micropost)) }
+          specify { expect(response).to redirect_to(signin_path) }
+        end
+      end
 
     end
 

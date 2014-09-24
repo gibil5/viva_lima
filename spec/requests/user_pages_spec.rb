@@ -1,5 +1,5 @@
 
-# jr@oblique: 2/9/14
+# jr@oblique: 17/9/14
 
 
 require 'spec_helper'
@@ -81,6 +81,8 @@ describe "User pages" do
   end
 
 
+
+
 # CREATE - Test signup process, with Capybara 
   describe "signup" do
 
@@ -132,21 +134,31 @@ describe "User pages" do
 
 
 
+
+
 # SHOW - Profile page 
   describe "profile page" do
 
-    let(:user) { 
-    		FactoryGirl.create(:user) 
-    }
+    let(:user) { FactoryGirl.create(:user) }
 
-    before { 
-  		# From capybara 
-    	visit user_path(user) 
-    }
+    let!(:m1) { FactoryGirl.create(:micropost, user: user, content: "Foo") }
+    let!(:m2) { FactoryGirl.create(:micropost, user: user, content: "Bar") }
+
+    before { visit user_path(user) }
 
     it { should have_content(user.name) }
     it { should have_title(user.name) }
+
+
+    describe "microposts" do
+      it { should have_content(m1.content) }
+      it { should have_content(m2.content) }
+      it { should have_content(user.microposts.count) }
+    end
+
   end
+
+
 
 
 

@@ -1,6 +1,6 @@
 
 
-# jr@oblique:  1/9/14
+# jr@oblique:  24/9/14
 
 
 module SessionsHelper
@@ -30,6 +30,15 @@ module SessionsHelper
 
 
 
+#jx 
+  def signed_in_user
+    unless signed_in?
+      store_location
+      redirect_to signin_url, notice: "Please sign in."
+    end
+  end
+
+
   def current_user?(user)
     user == current_user
   end
@@ -40,7 +49,6 @@ module SessionsHelper
   end
 
 
-#jx 
   def current_user
     remember_token = User.digest(cookies[:remember_token])
     # works only if @current_user is undefined 

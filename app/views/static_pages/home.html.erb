@@ -1,29 +1,44 @@
 
 
-<div class="center hero-unit">
+<% if signed_in? %>
+  
+  <div class="row">
+    <aside class="span4">
+      <section>
+  
+        <%= render 'shared/user_info' %>
+  
+      </section>
+      <section>
+  
+        <%= render 'shared/micropost_form' %>
+  
+      </section>
+    </aside>
 
-  <h1>Viva Lima</h1>
 
+    <div class="span8">
+      <h3>Micropost Feed</h3>
+      <%= render 'shared/feed' %>
+    </div> 
+  
+  </div>
 
-  <h2>
-Queremos conectar a las personas que buscan maneras saludables y conscientes de vivir...
-  </h2>
-
+<% else %>
 <!--
-  <h4>
-Queremos darte a conocer las alternativas que existen en tu localidad de productos, servicios y lugares que compartan este camino. 
-  </h4>
-
-  <h4>
-De esta manera, podremos conocernos y empezar a saber que no somos pocos los que buscamos nuevas formas de hacer las cosas.
-  </h4>
 -->
+	<div class="center hero-unit">
 
+  		<h1>Viva Lima</h1>
 
-  <%= link_to "¡ Inscríbete ahora !", signup_path, class: "btn btn-large btn-primary" %>
+  			<h2>
+			Queremos conectar a las personas que buscan maneras saludables y conscientes de vivir...
+  			</h2>
 
-</div>
+  			<%= link_to "¡ Inscríbete ahora !", signup_path, class: "btn btn-large btn-primary" %>
 
+	</div>
 
-<%= link_to image_tag("sunset_full.jpg", alt: "Rails"), 'http://rubyonrails.org/' %>
+	<%= link_to image_tag("sunset_full.jpg", alt: "Rails"), 'http://rubyonrails.org/' %>
 
+<% end %>

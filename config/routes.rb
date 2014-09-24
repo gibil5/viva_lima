@@ -1,23 +1,23 @@
 
 
-#jr@oblique: 29/08/14
+#jr@oblique: 24/9/14
 
 
 Rails.application.routes.draw do
 
 
   resources :users
+
   resources :sessions, only: [:new, :create, :destroy]    # no show or edit
 
+  resources :microposts, only: [:create, :destroy]
 
-  root  'static_pages#home'
 
   #     url             controller action             http request 
+  root  'static_pages#home'
   match '/signup',  to: 'users#new',                  via: 'get'
-
-
   match '/signin',  to: 'sessions#new',               via: 'get' 
-  match '/sessions',  to: 'sessions#create',               via: 'get' 
+  match '/sessions',to: 'sessions#create',               via: 'get' 
   match '/signout', to: 'sessions#destroy',           via: 'delete'
   match '/help',    to: 'static_pages#help',          via: 'get'
   match '/about',   to: 'static_pages#about',         via: 'get'
