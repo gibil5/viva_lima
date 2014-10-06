@@ -1,5 +1,5 @@
 
-# jr@oblique:  24/9/14
+# jr@oblique:  1/10/14
 
 
 require 'spec_helper'
@@ -12,12 +12,12 @@ describe "Micropost pages" do
   before { sign_in user }
 
 
-# Creation 
-  describe "micropost creation" do
+# CREATE
+  describe "CREATE - Micropost" do
+
     before { visit root_path }
 
     describe "with invalid information" do
-
       it "should not create a micropost" do
         expect { click_button "Post" }.not_to change(Micropost, :count)
       end
@@ -38,8 +38,8 @@ describe "Micropost pages" do
   end
 
 
-  #Destruction
-  describe "micropost destruction" do
+  # DESTROY 
+  describe "DESTROY - Micropost" do
     before { FactoryGirl.create(:micropost, user: user) }
 
     describe "as correct user" do
@@ -50,8 +50,6 @@ describe "Micropost pages" do
       end
     end
   end
-
-
 
 
 end

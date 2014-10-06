@@ -10,6 +10,7 @@ describe "User pages" do
   subject { page }
 
 
+
 # INDEX 
   describe "index" do
     
@@ -24,9 +25,7 @@ describe "User pages" do
     it { should have_title('All users') }
     it { should have_content('All users') }
 
-
-
-# pagination 
+    # pagination 
     describe "pagination" do
 
       before(:all) { 30.times { FactoryGirl.create(:user) } }
@@ -42,7 +41,7 @@ describe "User pages" do
     end
 
 
-# delete links 
+    # delete links 
     describe "delete links" do
 
       it { should_not have_link('delete') }
@@ -63,8 +62,6 @@ describe "User pages" do
         it { should_not have_link('delete', href: user_path(admin)) }
       end
     end
-
-
   end
 
 
@@ -140,7 +137,6 @@ describe "User pages" do
   describe "profile page" do
 
     let(:user) { FactoryGirl.create(:user) }
-
     let!(:m1) { FactoryGirl.create(:micropost, user: user, content: "Foo") }
     let!(:m2) { FactoryGirl.create(:micropost, user: user, content: "Bar") }
 
